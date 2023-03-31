@@ -1,4 +1,4 @@
-#Differential Music  
+# Differential Music  
 This ML model can compose music by learning from MIDI files. The output is also a MIDI file.
 The data encoding is based on intervals between notes in the time and pitch space,
 hence the name "Differential Music". For details on the encoding as well as model specifics, see my [paper](https://arxiv.org/ftp/arxiv/papers/2108/2108.10449.pdf).  
@@ -15,7 +15,7 @@ J.S. Bach.
 
 The MIDI parsing and MIDI writing is done using [MidiToolkit](https://github.com/YatingMusic/miditoolkit)
 
-##Getting Started
+## Getting Started
 This project has been run and tested on Python 3.7 with the package versions listed in
 the _**requirements.txt**_ file. If you want to train the model yourself, GPU support is recommended.
 If your system has GPU support and the dependencies are installed correctly, the code will
@@ -27,7 +27,7 @@ Install the project dependencies:
 
     pip3 install -r requirements.txt
 
-##Preparing the Data
+## Preparing the Data
 Load the data using the code below. This will parse the MIDI files and perform the pre-processing to encode them
 for feeding into the model. For details of the encoding see the [paper](https://arxiv.org/ftp/arxiv/papers/2108/2108.10449.pdf).
 
@@ -51,16 +51,16 @@ For example if the music contains a lot of 32<sup>nd</sup> notes, set ***beatDiv
 ***seed_length*** specifies the number of timesteps for the prompt which will also affect the LSTM input shape.
 40 proved to be a good working number but feel free to experiment with it.
 
-##Preparing the Model 
+## Preparing the Model 
 There are two ways to use this tool, you can either use the pretrained model or 
 train your own. The pretrained model is included in the repository as ***JSB_305_BeatDiv1_4000ep.h5*** which is standalone Tensorflow saved model format. Follow one of the two sections below depending on your choice. 
-###Loading pretrained model
+### Loading pretrained model
 
 ```python
 model = tf.keras.models.load_model("JSB_305_BeatDiv1_4000ep.h5")
 ```
 
-###Training your own model
+### Training your own model
 
 ```python
 model = LSTMdiff2D.get_model(seed_length, maxSpace)
@@ -73,7 +73,7 @@ model.evaluate(Xtest, ytest, batch_size=1335)   #to evaluate the model
 This will build and train the model using the provided MIDI dataset. For model details
 you can see the papar.
 
-##Generating music
+## Generating music
 
 ```python
 proll = LSTMdiff2D.compose(model=model, seed=Xtest[0], steps=1000, 
