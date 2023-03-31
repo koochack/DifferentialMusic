@@ -4,8 +4,8 @@
 import numpy as np
 #import easygui
 import scipy.io
-from scipy.io import loadmat
-import pickle
+#from scipy.io import loadmat
+#import pickle
 from miditoolkit.midi import parser as mid_parser
 from miditoolkit.pianoroll import parser as pr_parser
 from miditoolkit.midi import containers as ct
