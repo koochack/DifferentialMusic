@@ -2,7 +2,7 @@
 #and converts it to a 3D list (#of midis, #of pitches, #number of timesteps)
 #and saves it (if save is True) to a .pickle file
 import numpy as np
-import easygui
+#import easygui
 import scipy.io
 from scipy.io import loadmat
 import pickle
